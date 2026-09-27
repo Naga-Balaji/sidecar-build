@@ -82,8 +82,17 @@ android {
         applicationId "com.sidecarbuild"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 15
+        versionName "1.5"
+        ndk {
+            // iQOO 15 is arm64 only. Skip other ABIs — 4x less compile + APK size.
+            abiFilters "arm64-v8a"
+        }
+    }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
     }
     signingConfigs {
         debug {
